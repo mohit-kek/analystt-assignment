@@ -5,7 +5,7 @@
 }
 
 .container {
-  min-height: 100vh;
+  height: auto;
   width: 100%;
   background: #f1dbff;
   display: flex;
@@ -14,7 +14,6 @@
 }
 
 .user {
-  min-height: 10rem;
   width: 90%;
   background: #fff;
   margin: 1rem 0;
@@ -23,9 +22,10 @@
 }
 
 .user__data {
-  display: flex;
-  justify-content: space-between;
-  line-height: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 2rem;
+  
 }
 
 h2 {
@@ -47,7 +47,7 @@ span {
 }
 
 .btn:active {
-  background: #CC2C34;
+  background: #cc2c34;
 }
 
 .accordion__container {
@@ -58,23 +58,21 @@ span {
   line-height: rem;
   border-radius: 1rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  
 }
 
 .accordion__contact__details {
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  line-height: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  justify-content: center;
+  gap: 2rem;
   margin-top: 2rem;
 }
 
 /* Pagination */
 
-.pagination  {
-   display: flex;
-   justify-content: center;
+.pagination {
+  display: flex;
+  justify-content: center;
 }
 
 .pagination__selected {
@@ -86,11 +84,27 @@ span {
   height: 2rem;
   width: 2rem;
   font-size: 1.4rem;
- border-radius: 3px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+/* ========= MEDIA QUERIES (SMALL DEVICES) ======== */
+
+@media screen and (max-width: 600px) {
+  .accordion__contact__details {
+    grid-template-columns: auto;
+  }
+
+  .user__data {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .btn {
+    width: 6rem;
+  }
 }
 
 
