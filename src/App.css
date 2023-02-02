@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
   min-height: 100vh;
+  width: 100%;
+  background: #f1dbff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.user {
+  min-height: 10rem;
+  width: 90%;
+  background: #fff;
+  margin: 1rem 0;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user__data {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2rem;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+span {
+  font-weight: 500;
+}
+
+.btn {
+  height: 2rem;
+  width: 8rem;
+  background: #fc0404;
+  color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:active {
+  background: #CC2C34;
+}
+
+/* UserInfo Component */
+
+.userinfo__container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  line-height: rem;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
+}
+
+.userinfo__contact__details {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  line-height: 2rem;
+  margin-top: 2rem;
 }
