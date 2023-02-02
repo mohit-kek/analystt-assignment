@@ -1,14 +1,11 @@
 import React from 'react'
 import "./App.css"
 
-const AccordionBox = ({data}) => {
+const AccordionBox = ({ data }) => {
     return (
         <div className='accordion__container'>
             <div className='accordion__description'>
                 <h2>Description</h2>
-                {/* <p>
-            Providing service of domestic flight booking @ lowest price quaranteed and also for railway e-ticket booking also offering international flight tickets fiving services to our customers since 1995.
-        </p> */}
                 <p>{data.company.name}</p>
             </div>
 
@@ -49,7 +46,7 @@ const AccordionBox = ({data}) => {
 
 
         </div>
-       
+
     )
 }
 

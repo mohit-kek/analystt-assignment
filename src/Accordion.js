@@ -7,7 +7,7 @@ const Accordion = ({ data }) => {
 
     return (
         <>
- <div className="user" >
+            <div className="user" >
                 <div className='user__data'>
                     <span>{data.company.name}</span>
                     <div >
