@@ -19,14 +19,13 @@
   margin: 1rem 0;
   padding: 3rem 2rem;
   border-radius: 1.5rem;
-  overflow: hidden;
 }
 
 .user__data {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   gap: 2rem;
-  
 }
 
 h2 {
@@ -100,7 +99,7 @@ span {
   }
 
   .user__data {
-    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
   }
 
   .btn {
