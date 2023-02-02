@@ -1,73 +1,56 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
-import UserInfo from './UserInfo';
+import Accordion from './Accordion';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md"
 
 function App() {
-  const [accordion, setAccordion] = useState(false);
+
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(2);
 
-  // const data = {
-  //   name: "abc",
-  //   contact: "78787887",
-  //   city: "delhi",
-  //   state: "delhi",
-  // };
+  const fetchData = async () => {
+    let res = await axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .catch((err) => {
+        console.log("Err", err);
+      })
+    setData(res.data);
+  }
 
-  const handleToggle = (id) => {
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-    const findUser = data.find((user) => user.id === id);
-  setAccordion(prev => !prev);
-}
+  const selectPageHander =(selectedPage) => {
+if (selectedPage >= 1 && selectedPage <= Math.ceil(data.length/3) && selectedPage !== page)
+    setPage(selectedPage);
+  }
 
-const fetchData = async () => {
-  let res = await axios
-    .get("https://jsonplaceholder.typicode.com/users")
-    .catch((err) => {
-      console.log("Err", err);
-    })
-  console.log(res.data);
-  setData(res.data);
-}
+  return (
+    <div className="container">
+      {
+        data.slice(page * 3 - 3, page * 3).map(item => (
+          <Accordion data={item} key={item.id} />
+        ))
+      }
+      {
+        data.length > 0 && (
+          <div className="pagination">
+            <span><MdKeyboardArrowLeft onClick={() => selectPageHander(page - 1)} /></span>
+            {
+              [...Array(Math.ceil(data.length / 3))].map((_, i) => {
+                return <span className={page === i + 1 ? "pagination__selected" : ""} onClick={() => selectPageHander(i + 1)} key={i}>{i + 1}</span>
+              })
+            }
+            <span><MdKeyboardArrowRight onClick={() => selectPageHander(page + 1)} /></span>
 
-useEffect(() => {
-  fetchData()
-}, [])
-
-return (
-  <div className="container">
-
-    {
-      data.map((item) => (
-        <div className="user" key={item.id}>
-          <div className='user__data'>
-            <span>{item.company.name}</span>
-            <div >
-              <h2>Contact</h2>
-              <span>{item.name}</span>
-            </div>
-            <div>
-              <h2>City</h2>
-              <span>{item.address.city}</span>
-            </div>
-            <div>
-              <h2>State</h2>
-              <span>{item.address.street}</span>
-            </div>
-            <button className="btn" onClick={() => handleToggle(item.id)}>{accordion ? "Hide Details" : "View Details"}</button>
           </div>
-          {
-            accordion && <UserInfo item={item} />
-          }
+        )
+      }
 
-        </div>
-      ))
-    }
-
-
-
-  </div >
-)
+    </div >
+  )
 }
 
 export default App;

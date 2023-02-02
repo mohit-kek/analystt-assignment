@@ -50,9 +50,7 @@ span {
   background: #CC2C34;
 }
 
-/* UserInfo Component */
-
-.userinfo__container {
+.accordion__container {
   width: 80%;
   margin: 0 auto;
   margin-top: 2rem;
@@ -63,7 +61,7 @@ span {
   
 }
 
-.userinfo__contact__details {
+.accordion__contact__details {
   height: 40vh;
   display: flex;
   flex-direction: column;
@@ -71,3 +69,28 @@ span {
   line-height: 2rem;
   margin-top: 2rem;
 }
+
+/* Pagination */
+
+.pagination  {
+   display: flex;
+   justify-content: center;
+}
+
+.pagination__selected {
+  background-color: #fc0404;
+  color: #fff;
+}
+
+.pagination > span {
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.4rem;
+ border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
